@@ -45,7 +45,7 @@ Harici bir paket yükleme (`npm install` vb.) gerektirmez.
 
 ```bash
 # 1. Depoyu klonlayın
-git clone https://github.com/KULLANICI_ADINIZ/pixelcraft-studio.git
+git clone https://github.com/devilteams-s/Pixel-Studio-Web.git
 cd pixelcraft-studio
 
 # 2. Yerel sunucu başlatın
