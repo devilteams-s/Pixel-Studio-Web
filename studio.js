@@ -1,3 +1,96 @@
+
+// ==========================================
+// ÇOKLU DİL DESTEĞİ (TR / EN i18n)
+// ==========================================
+let currentLang = localStorage.getItem('pixel_lang') || 'tr';
+
+const TRANSLATIONS = {
+  tr: {
+    langBtn: '🌐 EN',
+    cssBtn: '✨ CSS Box-Shadow Al',
+    pngBtn: '💾 PNG İndir',
+    clearBtn: '🗑️ Temizle',
+    undoBtn: '↩️ Geri Al',
+    redoBtn: '↪️ İleri Al',
+    toolsTitle: 'Araçlar',
+    colorTitle: 'Renk',
+    gridTitle: 'Izgara Boyutu',
+    previewTitle: 'Canlı Animasyon Önizleme',
+    framesTitle: 'Kareler (Frames)',
+    addFrameBtn: '+ Yeni Kare',
+    play: '▶️ Oynat',
+    pause: '⏸️ Durdur',
+    frameName: 'Kare',
+    copiedAlert: 'CSS Kodu Panoya Kopyalandı!',
+    copyBtn: '📋 Kodu Kopyala'
+  },
+  en: {
+    langBtn: '🌐 TR',
+    cssBtn: '✨ Export CSS Box-Shadow',
+    pngBtn: '💾 Download PNG',
+    clearBtn: '🗑️ Clear',
+    undoBtn: '↩️ Undo',
+    redoBtn: '↪️ Redo',
+    toolsTitle: 'Tools',
+    colorTitle: 'Color',
+    gridTitle: 'Grid Size',
+    previewTitle: 'Live Animation Preview',
+    framesTitle: 'Frames Timeline',
+    addFrameBtn: '+ New Frame',
+    play: '▶️ Play',
+    pause: '⏸️ Pause',
+    frameName: 'Frame',
+    copiedAlert: 'CSS Code copied to clipboard!',
+    copyBtn: '📋 Copy Code'
+  }
+};
+
+function applyLanguage(lang) {
+  currentLang = lang;
+  localStorage.setItem('pixel_lang', lang);
+  const t = TRANSLATIONS[lang];
+
+  const langBtn = document.getElementById('btn-lang');
+  if (langBtn) langBtn.textContent = t.langBtn;
+
+  const cssBtn = document.getElementById('btn-export-css');
+  if (cssBtn) cssBtn.textContent = t.cssBtn;
+
+  const pngBtn = document.getElementById('btn-export-png');
+  if (pngBtn) pngBtn.textContent = t.pngBtn;
+
+  const clearBtn = document.getElementById('btn-clear-canvas');
+  if (clearBtn) clearBtn.textContent = t.clearBtn;
+
+  const undoBtn = document.getElementById('btn-undo');
+  if (undoBtn) undoBtn.textContent = t.undoBtn;
+
+  const redoBtn = document.getElementById('btn-redo');
+  if (redoBtn) redoBtn.textContent = t.redoBtn;
+
+  const addFrameBtn = document.getElementById('btn-add-frame');
+  if (addFrameBtn) addFrameBtn.textContent = t.addFrameBtn;
+
+  const copyBtn = document.getElementById('btn-copy-css');
+  if (copyBtn) copyBtn.textContent = t.copyBtn;
+
+  // Grup başlıkları
+  const titles = document.querySelectorAll('.group-title');
+  if (titles.length >= 3) {
+    titles[0].textContent = t.toolsTitle;
+    titles[1].textContent = t.colorTitle;
+    titles[2].textContent = t.gridTitle;
+  }
+
+  const pHeader = document.querySelector('.panel-section .section-header span');
+  if (pHeader) pHeader.textContent = t.previewTitle;
+
+  const fHeader = document.querySelector('.frames-section .section-header span');
+  if (fHeader) fHeader.textContent = t.framesTitle;
+
+  updateFramesList();
+}
+
 /**
  * PixelCraft Studio - Core Engine
  */
@@ -325,7 +418,7 @@ function updateFramesList() {
 
     const info = document.createElement('div');
     info.className = 'frame-info';
-    info.textContent = `Kare ${idx + 1}`;
+    info.textContent = `${TRANSLATIONS[currentLang].frameName} ${idx + 1}`;
 
     const actions = document.createElement('div');
     actions.className = 'frame-actions';
@@ -446,7 +539,7 @@ document.getElementById('modalClose').addEventListener('click', () => {
 document.getElementById('btn-copy-css').addEventListener('click', () => {
   const code = document.getElementById('cssCodeOutput').textContent;
   navigator.clipboard.writeText(code).then(() => {
-    alert('CSS Kodu Panoya Kopyalandı!');
+    alert(TRANSLATIONS[currentLang].copiedAlert);
   });
 });
 
@@ -486,3 +579,10 @@ if (btnRedo) btnRedo.addEventListener('click', redo);
 
 // Başlat
 init();
+applyLanguage(currentLang);
+const btnLang = document.getElementById('btn-lang');
+if (btnLang) {
+  btnLang.addEventListener('click', () => {
+    applyLanguage(currentLang === 'tr' ? 'en' : 'tr');
+  });
+}

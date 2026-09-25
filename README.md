@@ -1,94 +1,71 @@
 # 👾 PixelCraft Studio
 
-> Modern, tarayıcı tabanlı piksel sanatı çizim aracı, sprite animatörü ve **saf CSS box-shadow kod üreteci**. Sıfır harici kütüphane bağımlılığı ile saf HTML5 Canvas ve modern JavaScript ile geliştirilmiştir.
+> Modern, browser-based pixel art editor, sprite animator and **zero-dependency CSS box-shadow code generator**. Built purely with HTML5 Canvas, modern CSS, and Vanilla JavaScript.
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
 ![Python 3](https://img.shields.io/badge/Python-3.x-3776AB?style=flat&logo=python&logoColor=white)
+![i18n: TR/EN](https://img.shields.io/badge/Language-TR%20%7C%20EN-purple.svg)
 
 ---
 
-## ✨ Özellikler
+## ✨ Features (Özellikler)
 
-### 🎨 Çizim & Düzenleme Araçları
-- **Kalem (Pen):** Piksel piksel hassas çizim.
-- **Kova Dolgusu (Flood Fill):** Akıllı algoritma ile aynı renkteki kapalı alanları tek tıkla boyama.
-- **Silgi (Eraser):** Hızlı piksel temizleme.
-- **Damlalık (Eyedropper):** Çizimden anında renk örneği alma.
-- **Dinamik Izgara Seçenekleri:** 16x16, 24x24 ve 32x32 boyutlarında ayarlanabilir tuval.
-- **Hazır Neon & Retro Renk Paleti:** Hızlı renk seçimi ve özelleştirilebilir HEX renk seçici.
+### 🌐 Multi-Language (Çoklu Dil)
+- Instant **Turkish (TR)** and **English (EN)** toggle with persistent state saved in LocalStorage.
 
-### ⏱️ Canlı Animasyon & Kare (Frame) Timeline
-- **Çoklu Kare Desteği:** Yeni kareler ekleme, silme ve önceki kareyi kopyalayarak akıcı animasyonlar üretme.
-- **Canlı Önizleme:** Sağ üstteki mini oynatıcıda çizdiğin sprite animasyonunu anlık olarak izleme.
-- **FPS Kontrolü:** 1 - 24 FPS arasında animasyon hızını dinamik ayarlama ve duraklatma.
+### 🎨 Drawing & Editing Tools
+- **Pen:** Precise pixel-by-pixel drawing.
+- **Bucket Fill:** Smart Flood Fill algorithm for contiguous color areas.
+- **Eraser:** Fast pixel eraser.
+- **Eyedropper:** Sample colors directly from the canvas.
+- **Dynamic Grids:** 16x16, 24x24, and 32x32 adjustable grid resolutions.
+- **Curated Neon & Retro Palette:** Quick color selection plus custom color picker.
 
-### ⚡ Geri Al / İleri Al (Undo / Redo) & Kısayollar
-- **`Ctrl + Z` / `Cmd + Z`:** Son yapılan çizim hamlesini geri alma (40 adıma kadar geçmiş).
-- **`Ctrl + Y` / `Ctrl + Shift + Z`:** Geri alınan işlemi ileri alma.
-- **Klavye Kısayolları:** 
-  - `P`: Kalem (Pen)
-  - `B`: Kova (Bucket)
-  - `E`: Silgi (Eraser)
-  - `I`: Damlalık (Eyedropper)
+### ⏱️ Live Sprite Animation & Timeline
+- **Multi-Frame Support:** Add, duplicate and delete animation frames.
+- **Live Preview:** Real-time playback of sprite animations.
+- **FPS Controller:** Dynamic speed adjustment from 1 to 24 FPS with play/pause.
 
-### 🚀 Dışa Aktarma (Export)
-1. **✨ Saf CSS Box-Shadow:** Harici hiçbir resim (.png, .jpg vb.) kullanmadan, tek bir `<div>` etiketiyle piksel sanatını web sitelerine ekleme kodu üretir.
-2. **💾 PNG İndir:** Yüksek çözünürlüklü (512x512) piksel-keskinliğinde PNG olarak cihazınıza kaydeder.
+### ⚡ Undo / Redo & Shortcuts
+- **`Ctrl + Z` / `Cmd + Z`:** Undo last action (up to 40 history steps).
+- **`Ctrl + Y` / `Ctrl + Shift + Z`:** Redo.
+- **Keyboard Shortcuts:** `P` (Pen), `B` (Bucket), `E` (Eraser), `I` (Eyedropper).
+
+### 🚀 Export Options
+1. **✨ Pure CSS Box-Shadow:** Converts the drawing into a single `<div>` pure CSS shadow without needing any external image file.
+2. **💾 PNG Download:** High-resolution crisp 512x512 PNG file export.
 
 ---
 
-## 🚀 Kurulum ve Yerel Sunucu Başlatma
+## 🚀 Quick Start & Local Server
 
-Harici hiçbir paket veya kütüphane (`npm install` vb.) gerektirmez.
+Requires zero external packages or build steps (`npm install` not needed).
 
-### 1. Depoyu Klonlayın
+### 1. Clone the Repository
 ```bash
 git clone https://github.com/devilteams-s/Pixel-Studio-Web.git
 cd Pixel-Studio-Web
 ```
 
-### 2. Yerel Sunucuyu Başlatın
-
-Projede hem **Linux** hem **Windows** için otomatik tarayıcı açan Python geliştirme sunucusu hazır bulunmaktadır:
+### 2. Launch Local Server
 
 #### 🐧 Linux:
 ```bash
-# Betiği çalıştırın (Otomatik tarayıcı açar)
 ./start-server.sh
-
-# Veya doğrudan Python ile:
+# or
 python3 server.py
 ```
 
 #### 🪟 Windows:
-- `start-server.bat` dosyasına **çift tıklayın**,
-- Veya Komut İstemi'nde (CMD / PowerShell):
+- Double click `start-server.bat` or run:
 ```cmd
 python server.py
 ```
 
-> **Not:** Sunucu başlatıldığında varsayılan tarayıcınızda otomatik olarak `http://localhost:5173` adresi açılır. Port meşgulse otomatik olarak bir sonraki boş port seçilir.
-
 ---
 
-## 📁 Proje Yapısı
-
-```
-Pixel-Studio-Web/
-├── index.html        # Ana uygulama arayüzü
-├── style.css         # Glassmorphism & modern karanlık tema stilleri
-├── studio.js         # Çizim motoru, timeline, undo/redo ve export algoritmaları
-├── server.py         # Çapraz platform Python yerel geliştirme sunucusu
-├── start-server.sh   # Linux tek tıkla başlatma betiği
-├── start-server.bat  # Windows tek tıkla başlatma betiği
-├── README.md         # Dokümantasyon
-└── LICENSE           # MIT Lisansı
-```
-
----
-
-## 📄 Lisans
-Bu proje [MIT Lisansı](LICENSE) altında lisanslanmıştır.
+## 📄 License
+This project is licensed under the [MIT License](LICENSE).
