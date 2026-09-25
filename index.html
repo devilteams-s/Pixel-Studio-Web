@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PixelCraft Studio - Piksel Sanatı & CSS Jeneratörü</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-layout">
+    <!-- Üst Bar -->
+    <header class="navbar">
+      <div class="brand">
+        <span class="icon">👾</span>
+        <div>
+          <h2>PixelCraft Studio</h2>
+          <span class="badge">CSS Box-Shadow & Sprite Editor</span>
+        </div>
+      </div>
+      <div class="top-actions">
+        <button id="btn-undo" class="btn-secondary" title="Geri Al (Ctrl+Z)" disabled>↩️ Geri Al</button>
+        <button id="btn-redo" class="btn-secondary" title="İleri Al (Ctrl+Y)" disabled>↪️ İleri Al</button>
+        <button id="btn-export-css" class="btn-primary">✨ CSS Box-Shadow Al</button>
+        <button id="btn-export-png" class="btn-secondary">💾 PNG İndir</button>
+        <button id="btn-clear-canvas" class="btn-ghost">🗑️ Temizle</button>
+      </div>
+    </header>
+
+    <div class="workspace">
+      <!-- Sol Araç Çubuğu -->
+      <aside class="toolbar">
+        <div class="tool-group">
+          <div class="group-title">Araçlar</div>
+          <button class="tool-btn active" data-tool="pen" title="Kalem (P)">✏️</button>
+          <button class="tool-btn" data-tool="bucket" title="Kova Dolgusu (B)">🪣</button>
+          <button class="tool-btn" data-tool="eraser" title="Silgi (E)">🧹</button>
+          <button class="tool-btn" data-tool="eyedropper" title="Damlalık (I)">🧪</button>
+        </div>
+
+        <div class="tool-group">
+          <div class="group-title">Renk</div>
+          <div class="color-picker-wrapper">
+            <input type="color" id="primary-color" value="#ff4757">
+          </div>
+          <div class="palette-grid" id="palette">
+            <!-- Palet renkleri JS ile yüklenecek -->
+          </div>
+        </div>
+
+        <div class="tool-group">
+          <div class="group-title">Izgara Boyutu</div>
+          <select id="grid-size-select">
+            <option value="16" selected>16 x 16</option>
+            <option value="24">24 x 24</option>
+            <option value="32">32 x 32</option>
+          </select>
+        </div>
+      </aside>
+
+      <!-- Orta: Çizim Alanı -->
+      <main class="canvas-area">
+        <div class="grid-container" id="gridContainer">
+          <canvas id="pixelCanvas"></canvas>
+        </div>
+      </main>
+
+      <!-- Sağ: Kareler & Canlı Animasyon Önizleme -->
+      <aside class="sidebar-right">
+        <div class="panel-section">
+          <div class="section-header">
+            <span>Canlı Animasyon Önizleme</span>
+            <span id="fps-label">6 FPS</span>
+          </div>
+          <div class="preview-box">
+            <canvas id="previewCanvas" width="128" height="128"></canvas>
+          </div>
+          <div class="preview-controls">
+            <button id="btn-play-pause" class="btn-small">⏸️ Durdur</button>
+            <input type="range" id="fps-slider" min="1" max="24" value="6">
+          </div>
+        </div>
+
+        <div class="panel-section frames-section">
+          <div class="section-header">
+            <span>Kareler (Frames)</span>
+            <button id="btn-add-frame" class="btn-small btn-accent">+ Yeni Kare</button>
+          </div>
+          <div class="frames-list" id="framesList">
+            <!-- Kareler buraya eklenecek -->
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- Modal: CSS Export -->
+  <div class="modal-overlay" id="cssModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>✨ Saf CSS Box-Shadow Kodu</h3>
+        <button class="modal-close" id="modalClose">&times;</button>
+      </div>
+      <p class="modal-desc">Tek bir &lt;div&gt; ile harici hiçbir resim dosyası kullanmadan bu çizimi sitenizde gösterebilirsiniz!</p>
+      <pre class="code-block"><code id="cssCodeOutput"></code></pre>
+      <div class="modal-actions">
+        <button id="btn-copy-css" class="btn-primary">📋 Kodu Kopyala</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="studio.js"></script>
+</body>
+</html>
