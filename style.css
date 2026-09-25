@@ -433,3 +433,39 @@ button:disabled {
   color: #a29bfe;
   user-select: text;
 }
+
+/* Sağ Alt Geliştirici İmzası */
+.creator-badge {
+  position: fixed;
+  bottom: 14px;
+  right: 14px;
+  background: rgba(19, 20, 31, 0.85);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  text-decoration: none;
+  font-size: 0.75rem;
+  padding: 6px 14px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 100;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.creator-badge:hover {
+  color: #fff;
+  border-color: rgba(255, 71, 87, 0.6);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 71, 87, 0.25);
+}
+
+.creator-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+}

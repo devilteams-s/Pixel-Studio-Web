@@ -50,6 +50,7 @@ def main():
     print("=" * 55)
     print(f"📂 Dizin:   {script_dir}")
     print(f"🌐 Adres:   \033[94m{url}\033[0m")
+    print(f"👤 Geliştirici: \033[95m@devilteams-s\033[0m")
     print(f"🛑 Durdur:  Kapatmak için \033[91mCtrl + C\033[0m tuşlarına basın.")
     print("=" * 55 + "\n")
 
